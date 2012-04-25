@@ -1,0 +1,37 @@
+===================================================================================================
+Candida albicans Dicer (CaDcr1) is required for efficient ribosomal and spliceosomal RNA maturation
+===================================================================================================
+
+Bernstein DA.etc
+
+::
+
+    def RNase III == ribonuclease III
+    def C.albicans == Candida albicans
+    def CaDcr1 == C.albicans.Dicer
+    def ETS == external transcribed spacer
+
+    bg:
+        if interaction(numerous RNAs, protein) != {precies and coordinate}:
+            nascent transcripts !--> mature RNAs 
+
+        RNaseIII = protein.family{Rnt1,Dicer,...}
+            Rnt1.function.at = {fungal ribosome,spliceosome biogenesis}
+            Dicer.function = pathway.RNAi.siRNAs.init
+
+    previous: C.albicans.smallRNA.init --> ? CaDcr1.function
+
+    previous: CaDcr1.function = siRNAs.init.at.in_vitro --> ? siRNAs.init.at.in_vivo
+
+    previous: function.similiar(CaDcr1,CaAGO1).at.{pathway.RNAi}
+
+        however: -CaDcr1 --> defect.growth but -CaAGO1 --> not defect.growth
+        hypothesis: CaDcr1.function.add(?)
+
+        result: CaDcr1.function += {unprocessed pre-rRNA}.cleavage --> 3'ETS
+                CaDcr1.function += snRNA(U4).process(3'tail)
+
+        result: [details] two evolutionary model explain RNaseIII variety
+
+
+.. [1] `Bernstein,DA etc 2011 <http://www.pnas.org/content/early/2011/12/14/1118859109.abstract>`_

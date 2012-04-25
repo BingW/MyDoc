@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AftGalLoss &mdash; Bing&#39;s VimWorks</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.01',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/B.ico"/>
+    <link rel="top" title="Bing&#39;s VimWorks" href="../index.html" />
+    <link rel="next" title="YeastNet" href="../YeastNet/YeastNet.html" />
+    <link rel="prev" title="Welcome to Bing’s VimWorks!" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../YeastNet/YeastNet.html" title="YeastNet"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to Bing’s VimWorks!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Bing&#39;s VimWorks</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/B.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AftGalLoss</a><ul>
+<li><a class="reference internal" href="#info">Info</a></li>
+<li><a class="reference internal" href="#goals-and-hypothesis">Goals and Hypothesis</a></li>
+<li><a class="reference internal" href="#method">Method</a><ul>
+<li><a class="reference internal" href="#prepare">Prepare</a></li>
+<li><a class="reference internal" href="#analysis">Analysis</a></li>
+<li><a class="reference internal" href="#problems">Problems</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#todo">TODO</a><ul>
+<li><a class="reference internal" href="#interests">Interests</a></li>
+<li><a class="reference internal" href="#eurekas">Eurekas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#source-codes">Source Codes</a><ul>
+<li><a class="reference internal" href="#download-regev-py">download_regev.py</a></li>
+<li><a class="reference internal" href="#aftgallossanalysis-py">AftGalLossAnalysis.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Welcome to Bing&#8217;s VimWorks!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../YeastNet/YeastNet.html"
+                        title="next chapter">YeastNet</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/AftGalLoss/AftGalLoss.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="aftgalloss">
+<h1>AftGalLoss<a class="headerlink" href="#aftgalloss" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="info">
+<h2>Info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Project Term:</th>
+<th class="head">AftGalLoss</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Description:</td>
+<td>What Happens to yeast Genome after gal-network lost</td>
+</tr>
+<tr class="row-odd"><td>Author:</td>
+<td>BingWang</td>
+</tr>
+<tr class="row-even"><td>Last Modify:</td>
+<td>April 21, 2012</td>
+</tr>
+<tr class="row-odd"><td>Version:</td>
+<td>0.02</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="goals-and-hypothesis">
+<h2>Goals and Hypothesis<a class="headerlink" href="#goals-and-hypothesis" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The ambitious hypothesis is evolution is predictable. Short goal is to see what happens to yeast genome after gal network lost.</p>
+<p>In this project, our hypothesis is &#8220;After gal net work lost, genes which evolve faster or slower should have something in common&#8221;. &#8220;common&#8221; means share same groups of genes or share same gene ontology terms or even share same gene network topology.</p>
+<p>So before we go further, we need to know the <em>&#8220;evolve speed&#8221;</em>. Here is our solution:</p>
+<div class="figure">
+<img alt="../_images/definition.png" src="../_images/definition.png" style="height: 250px;" />
+<p class="caption">These are two phylogeny trees of two specific genes, in (a)sp0 branch much
+shorter than sp1 branch, so we assume this gene evolve slower in sp0 than in
+sp1. While in (b) sp0 evolve faster. So we define <strong>evolve speed</strong> as <strong>log2(sp2/sp1)</strong></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="prepare">
+<h3>Prepare<a class="headerlink" href="#prepare" title="Permalink to this headline">¶</a></h3>
+<p>First, we need to get some species that lost its gal network.</p>
+<p>So in this figure <a class="footnote-reference" href="#id6" id="id1">[1]</a> :</p>
+<div class="figure">
+<img alt="../_images/Species_Tree.png" src="../_images/Species_Tree.png" style="width: 300px;" />
+<p class="caption">The symbol <strong>x</strong> here means species lost gal network</p>
+</div>
+<p>We have three species that lost gal network. And pick out their three
+species threes. So we have three trees.</p>
+<div class="figure">
+<img alt="../_images/Four_three_sp_tree.png" src="../_images/Four_three_sp_tree.png" style="height: 150px;" />
+<p class="caption">The two C.gla trees are control tree pairs.</p>
+</div>
+<p>The genome data and orthologs files are from
+<a class="reference external" href="http://www.broadinstitute.org/regev/orthogroups/">Regev&#8217;s Fungal Orthogroups v1.1</a></p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Here is a python script to grab the whole genome data and orthologs file(see <a class="reference internal" href="#get-data">get-data</a>),which need module <a class="reference external" href="http://wwwsearch.sourceforge.net/mechanize/download.html">mechanize</a></p>
+</div>
+<p>And we create a pipeline to calculte the speed rate:</p>
+<div class="figure">
+<img alt="../_images/pipeline.png" src="../_images/pipeline.png" style="width: 300px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">code(see <a class="reference internal" href="#cal-speed">cal-speed</a>)</p>
+</div>
+<p>Technical details(You may <a class="reference internal" href="#analysis">skip this section</a>)</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">We use one2one orthologs, that means only those gene pairs appear in
+both orthologs files (A-B and B-A) and appear only once([A_1,B_1]
+not [A_1,B_1,B_2]) are considered as one2one orthologs.
+Others(include [A_1,NONE]) are ignored.</p>
+</li>
+<li><p class="first">We use <a class="reference external" href="http://dialign-tx.gobics.de/index">dialign-tx</a> do the mutiply
+alignment. And we have used <a class="reference external" href="http://dialign-tx.gobics.de/dialign_t_results">dialign-t</a> and <a class="reference external" href="http://bibiserv.techfak.uni-bielefeld.de/dialign/">dialign 2.2</a>, but these two seems have some bugs that several
+multiply would output nothing while dialign-tx is pretty good. We also
+use <a class="reference external" href="http://www.clustal.org/clustal2/">clustal-w</a> It seems not suitable
+for phylogeny analysis. However, its not easy to get dialign-tx work on
+64-bit MacOS, I have changed several int type variable to 64-bit long int,
+or I won&#8217;t pass the compile. On Linux Ubuntu-10.4 system, you can apt-get it,
+it won&#8217;t be a problem. It doesn&#8217;t work on Windows unless you use cygwin or
+other virtual tech.</p>
+</li>
+<li><p class="first">After alignment, we did refinement, so bad alignment won&#8217;t influence our result.
+We plan to use Gblocks, However, we can&#8217;t download it from its&#8217; <a class="reference external" href="http://molevol.cmima.csic.es/castresana/Gblocks.html">website</a> (Now it can!). So
+we refer the original paper <a class="footnote-reference" href="#id7" id="id2">[2]</a> <a class="footnote-reference" href="#id8" id="id3">[3]</a> and rewrite a simple python version of
+&#8220;Gblocks&#8221; code at <a class="reference internal" href="../lib/lib.html#alnrefine"><em>alnrefine.py</em></a>. In this program, we judge a conserve site
+by seeing the percent of the biggest same aligned bases. Default value is 1.0,
+this means unless all the bases are same, or it is non-conserve site. And we only
+want those alignment has more than <em>min_conserve</em> conserve site or length bigger
+than <em>min_flanking</em> and gaps no more than <em>gap_allow</em> and continues non-conserve
+site no more than <em>max_nonconserve</em>. This is an typical reference output.</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/Eg_for_refine.png" src="../_images/Eg_for_refine.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+<p>4. We use <a class="reference external" href="http://abacus.gene.ucl.ac.uk/software/paml.html">paml</a> do the branch length
+analysis. Here are the parameters we use.</p>
+<blockquote>
+<div><div class="highlight-python"><pre>noisy = 0               * 0,1,2,3,9: how much rubbish on the screen
+verbose = 1             * 0: concise; 1: detailed, 2: too much
+runmode = 0             * 0: user tree;  1: semi-automatic;  2: automatic
+                        * 3: StepwiseAddition; (4,5):PerturbationNNI; -2: pairwise noise
+seqtype = 2             * 1:codons; 2:AAs; 3:codons--&gt;AAs
+aaRatefile = wag.dat        * only used for aa seqs with model=empirical(_F)
+model = 8               * models for AAs or codon-translated AAs:
+                        * 0:poisson, 1:proportional, 2:Empirical, 3:Empirical+F
+                        * 6:FromCodon, 7:AAClasses, 8:REVaa_0, 9:REVaa(nr=189)
+Mgene = 0               * AA: 0:rates, 1:separate
+clock = 0               * 0:no clock, 1:global clock; 2:local clock
+fix_alpha = 1           * 0: estimate gamma shape parameter; 1: fix it at alpha
+alpha = 0.0             * initial or fixed alpha, 0:infinity (constant rate)
+Malpha = 0              * different alphas for genes
+ncatG = 5               * of categories in dG of NSsites models
+getSE = 1               * 0: don't want them, 1: want S.E.s of estimates
+RateAncestor = 0        * (0,1,2): rates (alpha&gt;0) or ancestral states (1 or 2)
+Small_Diff = 1e-06
+cleandata = 1               * remove sites with ambiguity data (1:yes, 0:no)?
+fix_blength = 0             * 0: ignore, -1: random, 1: initial, 2: fixed
+method = 1              * 0: simultaneous; 1: one branch at a time</pre>
+</div>
+</div></blockquote>
+<p>5. While calculate the evolve rate, we have a approximately, all branch length equal
+to 0 will be give a minimal value 0.0001,and evolve rate bigger than 4 will be
+equals to 4.(4 is quite big for evolve speed, though bigger are amplified by divide
+a very small number like 0.0001)</p>
+</div></blockquote>
+</div>
+<div class="section" id="analysis">
+<span id="id5"></span><h3>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Till now we analysed:</dt>
+<dd><ol class="first last arabic">
+<li><dl class="first docutils">
+<dt>Histogram of evolve speed:</dt>
+<dd><div class="first last figure">
+<img alt="../_images/Hist_log.png" src="../_images/Hist_log.png" style="width: 600px;" />
+<p class="caption">it seems in most of the case, sp0 tend to evolve faster than sp1.
+There are two explanations. 1. These genes are evolve faster
+because some specific reasons. 2. The species evolve faster and
+these genes are just a tend representation.</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Liner model</dt>
+<dd><p class="first">We calculate all gene&#8217;s tree and their evolve speed and see whether
+different liner model can explain the evolve speed difference between
+sp0(Gal-) and sp1(Gal+), and we get these figures:</p>
+<div class="figure">
+<img alt="../_images/co_Cgla(Sbay)_Agos.png" src="../_images/co_Cgla(Sbay)_Agos.png" style="width: 600px;" />
+</div>
+<p>This is a typical correction we get. Another &#8220;better&#8221; out put is:</p>
+<div class="figure">
+<img alt="../_images/co_Kwal_Agos.png" src="../_images/co_Kwal_Agos.png" style="width: 600px;" />
+</div>
+<p>But is still far from what we expected like the positive control:</p>
+<div class="last figure">
+<img alt="../_images/co_Cgla(Scer)_Cgla(Sbay).png" src="../_images/co_Cgla(Scer)_Cgla(Sbay).png" style="width: 600px;" />
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Gene Ontology</dt>
+<dd><p class="first last">We analysis the both tails of the histogram(log2(Sgla/Scer)&gt;2). And We
+get an enrichment on A.gos&#8217;s left tail and right tail. This means A.gos
+evolve faster in amino acid metabolism and evolve slower in signal
+transduction .Except this, we get nothing.(I will add figures and tables
+later...)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>NewWork Analysis</dt>
+<dd><p class="first last">We collect a whole genome protein-protein(PP) network. And found a
+significant lower evolved gene g</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="problems">
+<h3>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Our hypothesis is gal network loss may influence some specific genes,
+but some genes evolve faster just because the species evolve faster.
+So we should get rid of these genes)</li>
+<li>The influenced genes may not that much because of the whole network
+robust. So it&#8217;s hard to discover a miner signal under a strong white
+noise.</li>
+<li>We use the one2one orhtologs so many genes are ignored, those may gene
+duplicates or novel genes which also can be a influenced signal.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="todo">
+<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Construct a bigger tree.</li>
+<li>Learn Local GO analysis</li>
+</ul>
+<div class="section" id="interests">
+<h3>Interests<a class="headerlink" href="#interests" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>We found A.gos evolve faster in genes that correlated with amino acid
+metabolism</li>
+</ul>
+</div>
+<div class="section" id="eurekas">
+<h3>Eurekas<a class="headerlink" href="#eurekas" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>We have new project <a class="reference internal" href="../YeastNet/YeastNet.html#yeastnet"><em>YeastNet</em></a></li>
+<li>We have new project <a class="reference internal" href="../Scer_Spom/Scer_Spom.html#scer-spom"><em>Scer_Spom</em></a></li>
+<li>We have next project <a class="reference internal" href="../Genetrees/Genetrees.html#gene-trees"><em>Gene Trees</em></a></li>
+<li>We have next project <a class="reference internal" href="../Agos/Agos.html#agos"><em>Agos</em></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.pnas.org/content/107/22/10136.short">Slot JC, Rokas A, 2010</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://molevol.cmima.csic.es/castresana/pdf/Talavera_2007.pdf">Talavera G, Castresana J, 2007</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="http://molevol.cmima.csic.es/castresana/pdf/Castresana_2000.pdf">Castresana J, 2000</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="source-codes">
+<h2>Source Codes<a class="headerlink" href="#source-codes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="download-regev-py">
+<span id="get-data"></span><h3>download_regev.py<a class="headerlink" href="#download-regev-py" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">##Download whole genomes and orthologs from Regev&#39;s orthogroups</span>
+<span class="kn">import</span> <span class="nn">mechanize</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">br</span> <span class="o">=</span> <span class="n">mechanize</span><span class="o">.</span><span class="n">Browser</span><span class="p">()</span>
+<span class="n">_temp</span> <span class="o">=</span> <span class="n">mechanize</span><span class="o">.</span><span class="n">Browser</span><span class="p">()</span>
+<span class="c">##Download aa and nt</span>
+<span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.broadinstitute.org/regev/orthogroups/sources.html&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">br</span><span class="o">.</span><span class="n">links</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">l</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;nt&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">l</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&quot;.fasta&quot;</span><span class="p">):</span>
+        <span class="n">fasta_file</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">url</span><span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">print</span> <span class="n">fasta_file</span>
+        <span class="n">_temp</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.broadinstitute.org/regev/orthogroups/aa/&#39;</span><span class="o">+</span><span class="n">fasta_file</span><span class="p">)</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;aa/&quot;</span><span class="o">+</span><span class="n">fasta_file</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">_temp</span><span class="o">.</span><span class="n">response</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">_temp</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.broadinstitute.org/regev/orthogroups/nt/&#39;</span><span class="o">+</span><span class="n">fasta_file</span><span class="p">)</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;nt/&quot;</span><span class="o">+</span><span class="n">fasta_file</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">_temp</span><span class="o">.</span><span class="n">response</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c">##Download orthologs</span>
+<span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.broadinstitute.org/regev/orthogroups/orthologs.html&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">br</span><span class="o">.</span><span class="n">links</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">l</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&quot;.txt&quot;</span><span class="p">):</span>
+        <span class="n">ortholog_file</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">url</span><span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;%0A&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+       <span class="n">_temp</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.broadinstitute.org/regev/orthogroups/orthologs/&#39;</span><span class="o">+</span><span class="n">ortholog_file</span><span class="p">)</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;orthologs/&quot;</span><span class="o">+</span><span class="n">ortholog_file</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">_temp</span><span class="o">.</span><span class="n">response</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The more elegant code at <a class="reference internal" href="../HelloWorlds/HelloWorlds.html#download-webpage"><em>download_webpage.py</em></a></p>
+</div>
+</div>
+<div class="section" id="aftgallossanalysis-py">
+<span id="cal-speed"></span><h3>AftGalLossAnalysis.py<a class="headerlink" href="#aftgallossanalysis-py" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding:utf-8 -*-</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author: Bing Wang</span>
+<span class="sd">Last Modified: 2012.3.18</span>
+<span class="sd">Version: V0.01</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">WORKPATH</span> <span class="o">=</span> <span class="s">&quot;/Users/bingwang/VimWork/&quot;</span>
+<span class="c">#########################</span>
+<span class="c">#######Import#############</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="kn">as</span> <span class="nn">mlab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;/Users/bingwang/VimWork/&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">lib.read.read_orthogroups_tab</span> <span class="kn">as</span> <span class="nn">orth</span>
+<span class="kn">import</span> <span class="nn">lib.func.alnrefine</span> <span class="kn">as</span> <span class="nn">alr</span> 
+<span class="kn">import</span> <span class="nn">lib.func.paml</span> <span class="kn">as</span> <span class="nn">paml</span>
+<span class="c">#######  Class ##########</span>
+<span class="k">class</span> <span class="nc">Species</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gene</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">WORKPATH</span><span class="o">+</span><span class="s">&#39;db/&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s">&quot;AA.fasta&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;&gt;&quot;</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c">######## Function ##########</span>
+<span class="k">def</span> <span class="nf">time_left</span><span class="p">(</span><span class="n">percent</span><span class="p">):</span>
+    <span class="n">time_used</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">TIME_START</span>
+    <span class="k">print</span> <span class="n">percent</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="s">&#39;%&#39;</span>
+    <span class="k">print</span> <span class="s">&quot;Time used:</span><span class="se">\t</span><span class="s"> </span><span class="si">%.2f</span><span class="s">&quot;</span><span class="o">%</span><span class="p">((</span><span class="n">time_used</span><span class="p">)</span><span class="o">/</span><span class="mf">60.</span><span class="p">),</span><span class="s">&#39;min&#39;</span>
+    <span class="k">print</span> <span class="s">&quot;Time left:</span><span class="se">\t</span><span class="s"> </span><span class="si">%.2f</span><span class="s">&quot;</span><span class="o">%</span><span class="p">((</span><span class="n">time_used</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">percent</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">60.</span><span class="o">*</span><span class="n">percent</span><span class="p">)),</span><span class="s">&#39;min&#39;</span>
+
+<span class="k">def</span> <span class="nf">check_dir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span>
+
+<span class="k">def</span> <span class="nf">prepare_aln</span><span class="p">(</span><span class="n">sp0</span><span class="p">,</span><span class="n">sp1</span><span class="p">,</span><span class="n">sp2</span><span class="p">,</span><span class="n">outdir</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;************************************&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;*** Prepare Alignment input Data ***&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;************************************&quot;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp1</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp2</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">sp0</span><span class="o">.</span><span class="n">gene</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
+                <span class="n">sp1</span><span class="o">.</span><span class="n">gene</span><span class="p">[</span><span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp1</span><span class="p">[</span><span class="n">item</span><span class="p">]]</span>
+                <span class="n">sp2</span><span class="o">.</span><span class="n">gene</span><span class="p">[</span><span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp2</span><span class="p">[</span><span class="n">item</span><span class="p">]]</span>
+                <span class="n">write_f_name</span> <span class="o">=</span> <span class="n">item</span><span class="o">+</span><span class="s">&quot;_&quot;</span><span class="o">+</span><span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp1</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;_&quot;</span><span class="o">+</span> \
+                        <span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp2</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;.fasta&quot;</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">outdir</span><span class="o">+</span><span class="n">write_f_name</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&gt;&quot;</span><span class="o">+</span><span class="n">item</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">+</span><span class="n">sp0</span><span class="o">.</span><span class="n">gene</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&gt;&quot;</span><span class="o">+</span><span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp1</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">+</span><span class="n">sp1</span><span class="o">.</span><span class="n">gene</span><span class="p">[</span><span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp1</span><span class="p">[</span><span class="n">item</span><span class="p">]]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&gt;&quot;</span><span class="o">+</span><span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp2</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">+</span><span class="n">sp2</span><span class="o">.</span><span class="n">gene</span><span class="p">[</span><span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp2</span><span class="p">[</span><span class="n">item</span><span class="p">]]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s">&quot;WARNING: gene&quot;</span><span class="p">,</span><span class="n">item</span><span class="p">,</span><span class="s">&quot;not write&quot;</span> 
+                <span class="k">continue</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">batch_run_dialign</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;************************************&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;***         Doing Alignment      ***&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;************************************&quot;</span>
+    <span class="n">fsalist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">conf</span> <span class="o">=</span> <span class="s">&quot;/Users/bingwang/VimWork/lib/conf/&quot;</span>
+    <span class="n">dialign</span> <span class="o">=</span> <span class="s">&quot;dialign-tx &quot;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s">&quot;fasta&quot;</span><span class="p">:</span>
+            <span class="n">fsalist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fsalist</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fsalist</span><span class="p">):</span>
+        <span class="n">time_left</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mf">1.0</span><span class="o">/</span><span class="n">total</span><span class="o">*</span><span class="mf">0.25</span><span class="o">+</span><span class="n">TOTAL_PERCENT</span><span class="p">)</span>
+        <span class="n">infile</span> <span class="o">=</span> <span class="n">path</span><span class="o">+</span><span class="n">item</span>
+        <span class="n">outfile</span> <span class="o">=</span> <span class="n">path</span><span class="o">+</span><span class="n">item</span><span class="p">[:</span><span class="n">item</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)]</span><span class="o">+</span><span class="s">&quot;.fa&quot;</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">dialign</span><span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">conf</span><span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">infile</span><span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">outfile</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">batch_refine_aln</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;**************************&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;*** Refining Alignment ***&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;**************************&quot;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s">&quot;fa&quot;</span><span class="p">:</span>
+            <span class="n">alr</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">item</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">batch_write_ctl</span><span class="p">(</span><span class="n">aa_path</span><span class="p">,</span><span class="n">treefile</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;*****************************&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;*** Writing paml ctl file ***&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;*****************************&quot;</span>
+    <span class="k">if</span> <span class="n">treefile</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">treefile</span> <span class="o">=</span> <span class="n">WORKPATH</span> <span class="o">+</span> <span class="s">&quot;lib/func/3.tree&quot;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">aa_path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s">&quot;aa&quot;</span><span class="p">:</span>
+            <span class="n">paml</span><span class="o">.</span><span class="n">write_ctl</span><span class="p">(</span><span class="n">aa_path</span><span class="o">+</span><span class="n">item</span><span class="p">,</span><span class="n">treefile</span><span class="p">)</span>
+           
+<span class="k">def</span> <span class="nf">batch_codeml</span><span class="p">(</span><span class="n">ctl_path</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;*********************&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;*** Runing codeml ***&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;*********************&quot;</span>
+    <span class="n">ctllist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">ctl_path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s">&quot;ctl&quot;</span><span class="p">:</span>
+            <span class="n">paml</span><span class="o">.</span><span class="n">codeml</span><span class="p">(</span><span class="n">ctl_path</span><span class="o">+</span><span class="n">item</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">batch_read_output</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span><span class="n">outfile</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Sp0</span><span class="se">\t</span><span class="s">Sp1</span><span class="se">\t</span><span class="s">Sp2</span><span class="se">\t</span><span class="s">sp1+sp0</span><span class="se">\t</span><span class="s">sp2+sp0</span><span class="se">\t</span><span class="s">sp2+sp1</span><span class="se">\t\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">out_path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s">&quot;out&quot;</span><span class="p">:</span>
+            <span class="n">paml_out</span> <span class="o">=</span> <span class="n">paml</span><span class="o">.</span><span class="n">codeml_read</span><span class="p">(</span><span class="n">out_path</span><span class="o">+</span><span class="n">item</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">paml_out</span><span class="o">.</span><span class="n">write_line</span><span class="p">())</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">branch_calculte</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">WORKPATH</span><span class="o">+</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">paml_rate</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">paml_out</span> <span class="o">=</span> <span class="n">paml</span><span class="o">.</span><span class="n">read_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">sp0</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(((</span><span class="n">paml_out</span><span class="o">.</span><span class="n">sp1_sp0</span> <span class="o">+</span> <span class="n">paml_out</span><span class="o">.</span><span class="n">sp2_sp0</span><span class="p">)</span> <span class="o">-</span> <span class="n">paml_out</span><span class="o">.</span><span class="n">sp2_sp1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">sp1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(((</span><span class="n">paml_out</span><span class="o">.</span><span class="n">sp2_sp1</span> <span class="o">+</span> <span class="n">paml_out</span><span class="o">.</span><span class="n">sp1_sp0</span><span class="p">)</span> <span class="o">-</span> <span class="n">paml_out</span><span class="o">.</span><span class="n">sp2_sp0</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">sp2</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(((</span><span class="n">paml_out</span><span class="o">.</span><span class="n">sp2_sp1</span> <span class="o">+</span> <span class="n">paml_out</span><span class="o">.</span><span class="n">sp2_sp0</span><span class="p">)</span> <span class="o">-</span> <span class="n">paml_out</span><span class="o">.</span><span class="n">sp1_sp0</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sp0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sp1</span><span class="p">)</span> <span class="ow">or</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sp2</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sp0</span> <span class="o">=</span> <span class="n">sp0</span> <span class="k">if</span> <span class="n">sp0</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0001</span>
+            <span class="n">sp1</span> <span class="o">=</span> <span class="n">sp1</span> <span class="k">if</span> <span class="n">sp1</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0001</span>
+            <span class="n">sp0_devide_sp1</span> <span class="o">=</span> <span class="n">sp0</span><span class="o">/</span><span class="n">sp1</span>
+            <span class="n">sp0_devide_sp1</span> <span class="o">=</span> <span class="mi">16</span> <span class="k">if</span> <span class="n">sp0_devide_sp1</span> <span class="o">&gt;</span> <span class="mi">16</span> <span class="k">else</span> <span class="n">sp0_devide_sp1</span>
+            <span class="n">sp0_devide_sp1</span> <span class="o">=</span> <span class="mf">0.0625</span> <span class="k">if</span> <span class="n">sp0_devide_sp1</span> <span class="o">&lt;</span> <span class="mf">0.0625</span> <span class="k">else</span> <span class="n">sp0_devide_sp1</span>
+            <span class="n">paml_rate</span><span class="p">[</span><span class="n">paml_out</span><span class="o">.</span><span class="n">sp0name</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">sp0_devide_sp1</span><span class="p">)</span>    <span class="c">#paml-rate structure</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    f = open(branch_file,&quot;w&quot;)</span>
+<span class="sd">    f.write(&quot;sp0\tB_sp0\tB_sp1\tB_sp2\n&quot;)</span>
+<span class="sd">    for name in paml_rate:</span>
+<span class="sd">        f.write(name+&quot;\t&quot;+str(paml_rate[name][0])+\</span>
+<span class="sd">                &quot;\t&quot;+str(paml_rate[name][1])+\</span>
+<span class="sd">                &quot;\t&quot;+str(paml_rate[name][2])+&quot;\n&quot;)</span>
+<span class="sd">    f.close()</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">paml_rate</span>
+
+<span class="k">def</span> <span class="nf">check_num_of_file</span><span class="p">(</span><span class="n">outdir</span><span class="p">):</span>
+    <span class="n">count_fasta</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">count_aa</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">count_out</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">outdir</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="s">&quot;out&quot;</span><span class="p">:</span>
+            <span class="n">count_out</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="s">&quot;fasta&quot;</span><span class="p">:</span>
+            <span class="n">count_fasta</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="s">&quot;aa&quot;</span><span class="p">:</span>
+            <span class="n">count_aa</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">count_out</span> <span class="o">==</span> <span class="n">count_aa</span> <span class="ow">and</span> <span class="n">count_aa</span> <span class="o">==</span> <span class="n">count_fasta</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+<span class="k">def</span> <span class="nf">pipe</span><span class="p">(</span><span class="n">sp_name</span><span class="p">):</span>
+    <span class="c">#########        Calculte function           ########</span>
+    <span class="n">outdir</span> <span class="o">=</span> <span class="n">WORKPATH</span><span class="o">+</span><span class="s">&quot;AftGalLoss/&quot;</span><span class="o">+</span><span class="n">sp_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span><span class="s">&quot;_&quot;</span><span class="o">+</span><span class="n">sp_name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;_&quot;</span><span class="o">+</span><span class="n">sp_name</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;/&quot;</span>
+    <span class="n">check_dir</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>    <span class="c">#if not exist,creat it</span>
+    <span class="n">sp0</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">sp_name</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">sp1</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">sp_name</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">sp2</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">sp_name</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp1</span> <span class="o">=</span> <span class="n">orth</span><span class="o">.</span><span class="n">one</span><span class="p">(</span><span class="n">sp0</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="n">sp1</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">sp0</span><span class="o">.</span><span class="n">orth_sp2</span> <span class="o">=</span> <span class="n">orth</span><span class="o">.</span><span class="n">one</span><span class="p">(</span><span class="n">sp0</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="n">sp2</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">prepare_aln</span><span class="p">(</span><span class="n">sp0</span><span class="p">,</span><span class="n">sp1</span><span class="p">,</span><span class="n">sp2</span><span class="p">,</span><span class="n">outdir</span><span class="p">)</span>
+    <span class="n">batch_run_dialign</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
+    <span class="n">batch_refine_aln</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
+    <span class="n">batch_write_ctl</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
+    <span class="n">batch_codeml</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">check_num_of_file</span><span class="p">(</span><span class="n">outdir</span><span class="p">):</span>
+        <span class="n">outfile</span> <span class="o">=</span> <span class="n">WORKPATH</span><span class="o">+</span><span class="s">&quot;AftGalLoss/&quot;</span><span class="o">+</span><span class="n">sp_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span><span class="s">&quot;_&quot;</span><span class="o">+</span><span class="n">sp_name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;_&quot;</span><span class="o">+</span><span class="n">sp_name</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;.txt&quot;</span>
+        <span class="n">batch_read_output</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span><span class="n">outfile</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">hist_log_sp0_sp1</span><span class="p">(</span><span class="n">paml_rate</span><span class="p">,</span><span class="n">orth</span><span class="p">):</span>
+    <span class="n">count_right</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">log_sp0_sp1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">Bg_Genes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">sp0_devide_sp1</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">count_right</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">log_sp0_sp1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">paml_rate</span><span class="p">[</span><span class="n">orth</span><span class="p">[</span><span class="n">name</span><span class="p">]])</span>
+    <span class="n">pr</span> <span class="o">=</span> <span class="p">(</span><span class="n">count_right</span><span class="p">)</span><span class="o">*</span><span class="mf">1.0</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">log_sp0_sp1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">log_sp0_sp1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw_hist</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+    <span class="n">hist_log_sp0_sp1</span><span class="p">(</span><span class="n">Kwal_Sklu_Klac</span><span class="p">,</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Kwal</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;frequency&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Hist(log2(Kwal/Sklu))&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+    <span class="n">hist_log_sp0_sp1</span><span class="p">(</span><span class="n">Cgla_Scer_Scas</span><span class="p">,</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Cgla</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Hist(log2(Cgla/Scer))&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+    <span class="n">hist_log_sp0_sp1</span><span class="p">(</span><span class="n">Cgla_Sbay_Scas</span><span class="p">,</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Cgla</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;frequency&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;log2(sp0/sp1)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Hist(log2(Cgla/Sbay))&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+    <span class="n">hist_log_sp0_sp1</span><span class="p">(</span><span class="n">Agos_Klac_Sklu</span><span class="p">,</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Agos</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Hist(log2(Agos/Klac))&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;log2(sp0/sp1)&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&quot;/Users/bingwang/VimWork/AftGalLoss/Hist_log.png&quot;</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw_scatter</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">lib.draw.scatter_hist_test</span> <span class="kn">as</span> <span class="nn">scatter</span>
+    <span class="n">kwal_sklu</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cgla_scer</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cgla_sbay</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">agos_klac</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">Bg_Genes</span><span class="p">:</span>
+        <span class="n">kwal_sklu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Kwal_Sklu_Klac</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Kwal</span><span class="p">[</span><span class="n">name</span><span class="p">]])</span>
+        <span class="n">cgla_scer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Cgla_Scer_Scas</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Cgla</span><span class="p">[</span><span class="n">name</span><span class="p">]])</span>
+        <span class="n">cgla_sbay</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Cgla_Sbay_Scas</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Cgla</span><span class="p">[</span><span class="n">name</span><span class="p">]])</span>
+        <span class="n">agos_klac</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Agos_Klac_Sklu</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Agos</span><span class="p">[</span><span class="n">name</span><span class="p">]])</span>
+    <span class="n">scatter</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">kwal_sklu</span><span class="p">,</span><span class="n">cgla_scer</span><span class="p">,</span><span class="n">WORKPATH</span><span class="o">+</span><span class="s">&quot;AftGalLoss/co_Kwal_Cgla(Scer).png&quot;</span><span class="p">,</span>\
+            <span class="s">&quot;lg2(Kwal/Sklu) vs lg2(Cgla/Scer)&quot;</span><span class="p">)</span>
+    <span class="n">scatter</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">kwal_sklu</span><span class="p">,</span><span class="n">cgla_sbay</span><span class="p">,</span><span class="n">WORKPATH</span><span class="o">+</span><span class="s">&quot;AftGalLoss/co_Kwal_Cgla(Sbay).png&quot;</span><span class="p">,</span>\
+            <span class="s">&quot;lg2(Kwal/Sklu) vs lg2(Cgla/Sbay)&quot;</span><span class="p">)</span>
+    <span class="n">scatter</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">kwal_sklu</span><span class="p">,</span><span class="n">agos_klac</span><span class="p">,</span><span class="n">WORKPATH</span><span class="o">+</span><span class="s">&quot;AftGalLoss/co_Kwal_Agos.png&quot;</span><span class="p">,</span>\
+            <span class="s">&quot;lg2(Kwal/Sklu) vs lg2(Agos/Klac)&quot;</span><span class="p">)</span>
+    <span class="n">scatter</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cgla_scer</span><span class="p">,</span><span class="n">cgla_sbay</span><span class="p">,</span><span class="n">WORKPATH</span><span class="o">+</span><span class="s">&quot;AftGalLoss/co_Cgla(Scer)_Cgla(Sbay).png&quot;</span><span class="p">,</span>\
+            <span class="s">&quot;lg2(Cgla/Scer) vs lg2(Cgla/Sbay)&quot;</span><span class="p">)</span>
+    <span class="n">scatter</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cgla_scer</span><span class="p">,</span><span class="n">agos_klac</span><span class="p">,</span><span class="n">WORKPATH</span><span class="o">+</span><span class="s">&quot;AftGalLoss/co_Cgla(Scer)_Agos.png&quot;</span><span class="p">,</span>\
+            <span class="s">&quot;lg2(Cgla/Scer) vs lg2(Agos/Klac)&quot;</span><span class="p">)</span>
+    <span class="n">scatter</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cgla_sbay</span><span class="p">,</span><span class="n">agos_klac</span><span class="p">,</span><span class="n">WORKPATH</span><span class="o">+</span><span class="s">&quot;AftGalLoss/co_Cgla(Sbay)_Agos.png&quot;</span><span class="p">,</span>\
+            <span class="s">&quot;lg2(Cgla/Sbay) vs lg2(Agos/Klac)&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">go_term_query</span><span class="p">():</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">WORKPATH</span><span class="o">+</span><span class="s">&quot;/AftGalLoss/term_query_Genes.txt&quot;</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Bg_Genes</span><span class="se">\t</span><span class="s">log2(Kwal/Sklu)</span><span class="se">\t</span><span class="s">log2(Cgla/Scer)</span><span class="se">\t</span><span class="s">log2(Cgla/Sbay)</span><span class="se">\t</span><span class="s">log2(Agos/Klac)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">Bg_Genes</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">name</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Kwal_Sklu_Klac</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Kwal</span><span class="p">[</span><span class="n">name</span><span class="p">]])</span>\
+               <span class="o">+</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Cgla_Scer_Scas</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Cgla</span><span class="p">[</span><span class="n">name</span><span class="p">]])</span>  \
+               <span class="o">+</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Cgla_Sbay_Scas</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Cgla</span><span class="p">[</span><span class="n">name</span><span class="p">]])</span> \
+               <span class="o">+</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Agos_Klac_Sklu</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Agos</span><span class="p">[</span><span class="n">name</span><span class="p">]])</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">p_value</span><span class="p">(</span><span class="n">n_hit</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">pv</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_hit</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">pv</span> <span class="o">+=</span> <span class="p">((</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span> \
+                <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="p">)))</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">**</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">pv</span>
+<span class="c">#############             Main              ################</span>
+
+<span class="c">############################</span>
+<span class="c">###       Calculte      ####</span>
+<span class="c">############################</span>
+<span class="c">#TIME_START = time.time()</span>
+<span class="c">#TOTAL_PERCENT = 0.0001</span>
+<span class="c">#Kwal_Sklu_Klac = pipe([&quot;Kwal&quot;,&quot;Sklu&quot;,&quot;Klac&quot;])</span>
+<span class="c">##TOTAL_PERCENT = 0.25</span>
+<span class="c">#Cgla_Scer_Scas = pipe([&quot;Cgla&quot;,&quot;Scer&quot;,&quot;Scas&quot;])</span>
+<span class="c">##TOTAL_PERCENT = 0.5</span>
+<span class="c">#Agos_Klac_Sklu = pipe([&quot;Agos&quot;,&quot;Klac&quot;,&quot;Sklu&quot;])</span>
+<span class="c">##TOTAL_PERCENT = 0.75</span>
+<span class="c">#Cgla_Sbay_Scas = pipe([&quot;Cgla&quot;,&quot;Sbay&quot;,&quot;Scas&quot;])</span>
+<span class="c">#Klac_Agos_Kwal = pipe([&quot;&quot;])</span>
+<span class="c">##############################</span>
+<span class="c">###       Analysis         ###</span>
+<span class="c">##############################</span>
+<span class="n">Kwal_Sklu_Klac</span> <span class="o">=</span> <span class="n">branch_calculte</span><span class="p">(</span><span class="s">&quot;AftGalLoss/Kwal_Sklu_Klac.txt&quot;</span><span class="p">)</span>
+<span class="n">Cgla_Scer_Scas</span> <span class="o">=</span> <span class="n">branch_calculte</span><span class="p">(</span><span class="s">&quot;AftGalLoss/Cgla_Scer_Scas.txt&quot;</span><span class="p">)</span>
+<span class="n">Cgla_Sbay_Scas</span> <span class="o">=</span> <span class="n">branch_calculte</span><span class="p">(</span><span class="s">&quot;AftGalLoss/Cgla_Sbay_Scas.txt&quot;</span><span class="p">)</span>
+<span class="n">Agos_Klac_Sklu</span> <span class="o">=</span> <span class="n">branch_calculte</span><span class="p">(</span><span class="s">&quot;AftGalLoss/Agos_Klac_Sklu.txt&quot;</span><span class="p">)</span>
+
+<span class="n">Scer</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="s">&quot;Scer&quot;</span><span class="p">)</span>
+<span class="n">Scer</span><span class="o">.</span><span class="n">orth_Kwal</span> <span class="o">=</span> <span class="n">orth</span><span class="o">.</span><span class="n">one</span><span class="p">(</span><span class="s">&quot;Scer&quot;</span><span class="p">,</span><span class="s">&quot;Kwal&quot;</span><span class="p">)</span>
+<span class="n">Scer</span><span class="o">.</span><span class="n">orth_Cgla</span> <span class="o">=</span> <span class="n">orth</span><span class="o">.</span><span class="n">one</span><span class="p">(</span><span class="s">&quot;Scer&quot;</span><span class="p">,</span><span class="s">&quot;Cgla&quot;</span><span class="p">)</span>
+<span class="n">Scer</span><span class="o">.</span><span class="n">orth_Agos</span> <span class="o">=</span> <span class="n">orth</span><span class="o">.</span><span class="n">one</span><span class="p">(</span><span class="s">&quot;Scer&quot;</span><span class="p">,</span><span class="s">&quot;Agos&quot;</span><span class="p">)</span>
+<span class="n">Scer</span><span class="o">.</span><span class="n">orth_Klac</span> <span class="o">=</span> <span class="n">orth</span><span class="o">.</span><span class="n">one</span><span class="p">(</span><span class="s">&quot;Scer&quot;</span><span class="p">,</span><span class="s">&quot;Klac&quot;</span><span class="p">)</span>
+
+<span class="n">Bg_Genes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">Scer</span><span class="o">.</span><span class="n">gene</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">Kwal_Sklu_Klac</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Kwal</span><span class="p">[</span><span class="n">name</span><span class="p">]]</span>
+        <span class="n">Cgla_Scer_Scas</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Cgla</span><span class="p">[</span><span class="n">name</span><span class="p">]]</span>
+        <span class="n">Cgla_Sbay_Scas</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Cgla</span><span class="p">[</span><span class="n">name</span><span class="p">]]</span>
+        <span class="n">Agos_Klac_Sklu</span><span class="p">[</span><span class="n">Scer</span><span class="o">.</span><span class="n">orth_Agos</span><span class="p">[</span><span class="n">name</span><span class="p">]]</span>
+        <span class="n">Bg_Genes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">continue</span>
+<span class="c">#draw_hist()</span>
+<span class="c">#draw_scatter()</span>
+<span class="c">#go_term_query()</span>
+
+
+<span class="c">#TODO involve in network</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">My_Physical_engine</span> <span class="kn">as</span> <span class="nn">Phy</span>
+<span class="kn">import</span> <span class="nn">read_interaction_data</span> <span class="kn">as</span> <span class="nn">Interaction</span>
+
+<span class="n">interaction_file</span> <span class="o">=</span> <span class="s">&quot;/Users/bingwang/VimWork/db/interaction_data.tab&quot;</span>
+<span class="n">interactions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">PP_net</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">interaction_file</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">interaction</span> <span class="o">=</span> <span class="n">Interaction</span><span class="o">.</span><span class="n">Interaction_SGD</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="n">interactions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interaction</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">gal_genes</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;YBR018C&quot;</span><span class="p">,</span><span class="s">&quot;YBR019C&quot;</span><span class="p">,</span><span class="s">&quot;YBR020W&quot;</span><span class="p">,</span><span class="s">&quot;YDR009W&quot;</span><span class="p">,</span>\
+        <span class="s">&quot;YLR081W&quot;</span><span class="p">,</span><span class="s">&quot;YML051W&quot;</span><span class="p">,</span><span class="s">&quot;YMR105C&quot;</span><span class="p">,</span><span class="s">&quot;YPL248C&quot;</span><span class="p">]</span>
+<span class="c">#gene_name = [GAL7,GAL10,GAL1,GAL3,\</span>
+<span class="c">#           GAL2,GAL80,GAL5,GAL4]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">gal_genes</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">Scer</span><span class="o">.</span><span class="n">orth_Klac</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;No:&quot;</span><span class="p">,</span><span class="n">name</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">pp_exp_type = [&quot;Reconstituted Complex&quot;,&quot;Two-hybrid&quot;,&quot;Protein-peptide&quot;, \</span>
+<span class="sd">    &quot;PCA&quot;,&quot;FRET&quot;,&quot;Far Western&quot;,&quot;Co-purification&quot;,&quot;Co-localization&quot;, \</span>
+<span class="sd">    &quot;Co-fractionation&quot;,&quot;Co-crystal Structure&quot;,&quot;Affinity Capture-Western&quot;,\</span>
+<span class="sd">    &quot;Affinity Capture-MS&quot;,&quot;Affinity Capture-Luminescence&quot;]</span>
+
+<span class="sd">for item in Interaction.exp_gene_filter(interactions,pp_exp_type,gal_genes):</span>
+<span class="sd">    PP_net.add_node(item.bait_name)</span>
+<span class="sd">    PP_net.add_node(item.hit_name)</span>
+<span class="sd">    PP_net.add_edge(item.bait_name,item.hit_name)</span>
+
+<span class="sd">PP_net = Interaction.sub_by_genes(Bg_Genes,PP_net)</span>
+
+<span class="sd">query_genes = [name for name in Bg_Genes if Agos_Klac_Sklu[Scer.orth_Agos[name]] &lt; -1] </span>
+<span class="sd">#query_genes = [name for name in Bg_Genes if Agos_Klac_Sklu[Scer.orth_Agos[name]] &gt; 1] </span>
+<span class="sd">#query_genes = [name for name in Bg_Genes if Kwal_Sklu_Klac[Scer.orth_Kwal[name]] &lt; -1] </span>
+<span class="sd">#query_genes = [name for name in Bg_Genes if Kwal_Sklu_Klac[Scer.orth_Kwal[name]] &gt; 1] </span>
+<span class="sd">#query_genes = [name for name in Bg_Genes if Cgla_Sbay_Scas[Scer.orth_Cgla[name]] &lt; -1] </span>
+<span class="sd">#query_genes = [name for name in Bg_Genes if Cgla_Sbay_Scas[Scer.orth_Cgla[name]] &gt; 1] </span>
+<span class="sd">#query_genes = [name for name in Bg_Genes if Cgla_Scer_Scas[Scer.orth_Cgla[name]] &lt; -1] </span>
+<span class="sd">#query_genes = [name for name in Bg_Genes if Cgla_Scer_Scas[Scer.orth_Cgla[name]] &gt; 1] </span>
+
+<span class="sd">hit_genes = [name for name in query_genes if name in PP_net.nodes()] </span>
+<span class="sd">for gene in hit_genes:</span>
+<span class="sd">    print gene</span>
+<span class="sd">print &quot;p value:&quot;,p_value(len(hit_genes),len(query_genes),len(PP_net.nodes())*1./len(Bg_Genes))</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../YeastNet/YeastNet.html" title="YeastNet"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to Bing’s VimWorks!"
+             >previous</a> |</li>
+        <li><a href="../index.html">Bing&#39;s VimWorks</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, BingWang.
+      Last updated on Apr 21, 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

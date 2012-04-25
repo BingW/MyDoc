@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Annotation of Genes &mdash; Bing&#39;s VimWorks</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.01',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/B.ico"/>
+    <link rel="top" title="Bing&#39;s VimWorks" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Bing&#39;s VimWorks</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/B.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Annotation of Genes</a><ul>
+<li><a class="reference internal" href="#generation-of-transcript-based-gene-models">Generation of Transcript-based Gene Models</a></li>
+<li><a class="reference internal" href="#alignment-of-transcripts-to-the-assembled-genome">Alignment of Transcripts to the Assembled Genome</a></li>
+<li><a class="reference internal" href="#production-of-candidate-gene-models">Production of Candidate Gene Models</a></li>
+<li><a class="reference internal" href="#selection-of-the-best-refseq-rna-based-gene-models">Selection of the Best RefSeq RNA-based Gene Models</a></li>
+<li><a class="reference internal" href="#exon-refinement">Exon Refinement</a></li>
+<li><a class="reference internal" href="#chaining-of-transcript-based-gene-models">Chaining of Transcript-based Gene Models</a></li>
+<li><a class="reference internal" href="#ab-initio-gene-prediction">Ab Initio Gene Prediction</a></li>
+<li><a class="reference internal" href="#dividing-the-genomic-sequences-into-segments">Dividing the Genomic Sequences into Segments</a></li>
+<li><a class="reference internal" href="#producing-protein-hints-for-genomescan">Producing Protein Hints for GenomeScan</a></li>
+<li><a class="reference internal" href="#predicting-genes-using-genomescan">Predicting Genes Using GenomeScan</a></li>
+<li><a class="reference internal" href="#consolidation-of-gene-models">Consolidation of Gene Models</a></li>
+<li><a class="reference internal" href="#pruning-of-gene-models">Pruning of Gene Models</a></li>
+<li><a class="reference internal" href="#gene-models-superceded-by-curated-genomic-regions">Gene Models Superceded by Curated Genomic Regions</a></li>
+<li><a class="reference internal" href="#gene-models-likely-to-be-pseudogenes">Gene Models Likely to Be Pseudogenes</a></li>
+<li><a class="reference internal" href="#conflicting-gene-models">Conflicting Gene Models</a></li>
+<li><a class="reference internal" href="#location-of-model-coding-regions">Location of Model Coding Regions</a></li>
+<li><a class="reference internal" href="#relating-gene-models-to-known-genes-transcripts-and-proteins">Relating Gene Models to Known Genes, Transcripts, and Proteins</a></li>
+<li><a class="reference internal" href="#relating-the-model-transcripts-to-known-transcripts">Relating the Model Transcripts to Known Transcripts</a></li>
+<li><a class="reference internal" href="#relating-the-model-proteins-to-known-proteins">Relating the Model Proteins to Known Proteins</a></li>
+<li><a class="reference internal" href="#assigning-gene-identifiers-to-models">Assigning Gene Identifiers to Models</a></li>
+<li><a class="reference internal" href="#selection-of-transcript-models-to-represent-each-gene">Selection of Transcript Models to Represent Each Gene</a></li>
+<li><a class="reference internal" href="#naming-of-gene-products">Naming of Gene Products</a></li>
+<li><a class="reference internal" href="#annotation-of-the-assembled-genomic-contigs">Annotation of the Assembled Genomic Contigs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#annotation-of-other-features">Annotation of Other Features</a><ul>
+<li><a class="reference internal" href="#annotation-of-stss">Annotation of STSs</a></li>
+<li><a class="reference internal" href="#annotation-of-clones">Annotation of Clones</a></li>
+<li><a class="reference internal" href="#annotation-of-sequence-variation">Annotation of Sequence Variation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/GenBank/annotation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="annotation-of-genes">
+<h1>Annotation of Genes<a class="headerlink" href="#annotation-of-genes" title="Permalink to this headline">¶</a></h1>
+<p>Identification of genes within the genome assembly reveals the functional significance of particular stretches of genomic sequence. Genes are found using three complementary approaches: (a) known genes are placed primarily by aligning mRNAs to the assembled genomic contigs; (b) additional genes are located based on alignment of ESTs to the assembled genomic contigs; and (c) previously unknown genes are predicted using hints provided by protein homologies. Whenever possible, predicted genes are identified by homology between the protein they encode and known protein sequences.</p>
+<div class="section" id="generation-of-transcript-based-gene-models">
+<h2>Generation of Transcript-based Gene Models<a class="headerlink" href="#generation-of-transcript-based-gene-models" title="Permalink to this headline">¶</a></h2>
+<p>Alignments between known transcripts and the assembled genomic sequences are processed to produce gene models. Each gene model consists of an ordered series of exons. The transcripts defining each gene model are used as evidence to support that model.</p>
+</div>
+<div class="section" id="alignment-of-transcripts-to-the-assembled-genome">
+<h2>Alignment of Transcripts to the Assembled Genome<a class="headerlink" href="#alignment-of-transcripts-to-the-assembled-genome" title="Permalink to this headline">¶</a></h2>
+<p>The alignments between RefSeq RNA sequences, mRNA and EST sequences from GenBank and the component genomic sequences are remapped to produce alignments of these transcripts to the assembled genomic contigs.</p>
+</div>
+<div class="section" id="production-of-candidate-gene-models">
+<h2>Production of Candidate Gene Models<a class="headerlink" href="#production-of-candidate-gene-models" title="Permalink to this headline">¶</a></h2>
+<p>A candidate gene model is produced from each set of alignments between a particular transcript and one strand of a particular genomic contig as follows: (1) putative exons are identified by looking for mRNA splice sites near the ends of those alignments that satisfy minimum length and percentage identity criteria; (2) a mutually compatible set of exons for the model is selected by applying rules, such as restrictions on the size of an intron, that define plausible exon–intron structures; and (3) BLAST (4) may be used to produce additional alignments to try to identify exons that were missed because they were too short to be represented in the initial set of transcript alignments. Candidate gene models are only retained if good-quality alignments between their exons and the defining transcript cover either more than half the length of the transcript or more than 1 Kbp.</p>
+</div>
+<div class="section" id="selection-of-the-best-refseq-rna-based-gene-models">
+<h2>Selection of the Best RefSeq RNA-based Gene Models<a class="headerlink" href="#selection-of-the-best-refseq-rna-based-gene-models" title="Permalink to this headline">¶</a></h2>
+<p>Each RefSeq RNA represents a distinct transcript produced from a particular gene (Chapter 18; Refs. 8, 9). Hence, there should not be more than one gene model corresponding to any given RefSeq RNA. Therefore, all gene models based on a particular RefSeq RNA are compared, and the best one is selected. Because the RefSeq RNA is taken to be the best representation of a particular transcript, this gene model is preserved without any further modification. Any extra models may represent paralogs; therefore, they are included with the mRNA- and EST-based models for further processing. Between builds, RefSeq RNAs are refined based on a review of related gene models and transcript alignments produced during the genome annotation process.</p>
+</div>
+<div class="section" id="exon-refinement">
+<h2>Exon Refinement<a class="headerlink" href="#exon-refinement" title="Permalink to this headline">¶</a></h2>
+<p>Many gene models may be produced for the same gene because the input data set frequently contains multiple EST or mRNA sequences representing the same transcript. This redundancy is used to refine the splice sites defining a particular exon. Similar exons are clustered, and splice sites may be adjusted in some models to match those used by the majority of models containing the same exon. Inconsistent models may be discarded at this stage, unless they have sufficient support to be retained as likely splice variants.</p>
+</div>
+<div class="section" id="chaining-of-transcript-based-gene-models">
+<h2>Chaining of Transcript-based Gene Models<a class="headerlink" href="#chaining-of-transcript-based-gene-models" title="Permalink to this headline">¶</a></h2>
+<p>Many of the mRNAs and most of the ESTs used to generate the initial gene models provide sequence for only part of the native transcript. Overlapping gene models that are compatible with each other are combined into an extended model. This chaining step produces models more likely to represent the full gene.</p>
+</div>
+<div class="section" id="ab-initio-gene-prediction">
+<h2>Ab Initio Gene Prediction<a class="headerlink" href="#ab-initio-gene-prediction" title="Permalink to this headline">¶</a></h2>
+<p>GenomeScan, an ab initio gene prediction program, is used to provide models for genes inferred from the genomic sequence using hints provided by protein homologies (17). The genes predicted by GenomeScan are combined with the transcript-based gene models, but they are also retained as a distinct set of models that can be viewed or searched separately.</p>
+</div>
+<div class="section" id="dividing-the-genomic-sequences-into-segments">
+<h2>Dividing the Genomic Sequences into Segments<a class="headerlink" href="#dividing-the-genomic-sequences-into-segments" title="Permalink to this headline">¶</a></h2>
+<p>GenomeScan produces better results when long genomic sequences are broken into shorter segments at putative gene boundaries. The locations of gene models based on RefSeq RNA alignments are, therefore, used to divide the assembled genomic contigs into segments. Repetitive sequences are masked by remapping the repeats found in the component genomic sequences.</p>
+</div>
+<div class="section" id="producing-protein-hints-for-genomescan">
+<h2>Producing Protein Hints for GenomeScan<a class="headerlink" href="#producing-protein-hints-for-genomescan" title="Permalink to this headline">¶</a></h2>
+<p>GenomeScan can use data on protein homologies to improve its gene predictions (17). The locations of genomic sequences that potentially code for polypeptides with homology to other proteins are obtained from three sources. Significant alignments between translated genomic segments and vertebrate proteins are obtained by filtering and remapping the precomputed alignments. Significant alignments between translated genomic sequences and conserved protein domains are obtained in the same manner. A third set of alignments comes from running GenomeScan without any hints. The proteins predicted by this initial run are aligned to proteins from SWISS-PROT (18) and NCBI RefSeq proteins (8, 9) using blastp (4). The eukaryotic protein with the best match is then aligned to the genomic sequence segments using tblastn (4). These three sets of data are converted into the format required by GenomeScan and merged to produce a single set of protein hints.</p>
+</div>
+<div class="section" id="predicting-genes-using-genomescan">
+<h2>Predicting Genes Using GenomeScan<a class="headerlink" href="#predicting-genes-using-genomescan" title="Permalink to this headline">¶</a></h2>
+<p>Each segment of genomic sequence is processed by GenomeScan using the combined set of protein homology-based hints as an additional input. This produces one model containing all of the predicted exons for each putative gene. Models with coding sequences shorter than 90 amino acids are discarded. Each remaining model is aligned to proteins from SWISS-PROT and NCBI RefSeq proteins using blastp. The eukaryotic protein with the best match to any model is used as evidence for that model and to provide a clue as to the possible function of that model.</p>
+</div>
+<div class="section" id="consolidation-of-gene-models">
+<h2>Consolidation of Gene Models<a class="headerlink" href="#consolidation-of-gene-models" title="Permalink to this headline">¶</a></h2>
+<p>Consolidation of the transcript-based gene models and the predicted gene models forms a single set of models. Models are clustered into genes if they share one or more exons or if Entrez Gene (Chapter 19; Refs. 8, 9) indicates that the transcripts used as evidence for the models come from the same gene. If a model is entirely contained within a longer model, it is redundant and, therefore, eliminated. Sets of identical models are reduced to a single representative model linked to all of the supporting evidence. For sets of very similar models, a single model is picked as a representative, giving preference to models based on RefSeq RNAs or on GenBank mRNAs. Predicted gene models that significantly overlap transcript-based models but that are not sufficiently similar to consolidate are discarded.</p>
+</div>
+<div class="section" id="pruning-of-gene-models">
+<h2>Pruning of Gene Models<a class="headerlink" href="#pruning-of-gene-models" title="Permalink to this headline">¶</a></h2>
+<p>Some gene models are discarded because: superior gene annotation is available from a curated genomic region, they are likely to represent pseudogenes, or they are incompatible with other gene models.</p>
+</div>
+<div class="section" id="gene-models-superceded-by-curated-genomic-regions">
+<h2>Gene Models Superceded by Curated Genomic Regions<a class="headerlink" href="#gene-models-superceded-by-curated-genomic-regions" title="Permalink to this headline">¶</a></h2>
+<p>The manually reviewed annotations from curated genomic region RefSeqs are used in preference to any corresponding gene models generated by automated processing. The curated genomic regions are aligned to the assembled genomic contigs by remapping the alignments between these RefSeqs and the component genomic sequences. Any gene model that significantly overlaps a segment of the assembled sequence that corresponds to a curated genomic region is discarded.</p>
+</div>
+<div class="section" id="gene-models-likely-to-be-pseudogenes">
+<h2>Gene Models Likely to Be Pseudogenes<a class="headerlink" href="#gene-models-likely-to-be-pseudogenes" title="Permalink to this headline">¶</a></h2>
+<p>When transcripts from a particular gene are aligned to the genomic sequences, they will align not only to the active copy of the gene but also to any segment of the genome containing a pseudogene derived from the active gene. Because model transcripts or model proteins that represent nontranscribed pseudogenes are undesirable, an attempt is made to identify and remove such models.</p>
+<p>Whenever possible, alignments of RefSeqs for pseudogenes, either curated genomic regions or RNAs, are used to annotate pseudogenes. Some additional models derived from pseudogenes that are not yet represented by RefSeqs are eliminated by the following mechanism. All models based on the same supporting mRNA are compared with respect to the percent identity of the alignments and the number of exons. Only the model with the strongest evidence is retained.</p>
+</div>
+<div class="section" id="conflicting-gene-models">
+<h2>Conflicting Gene Models<a class="headerlink" href="#conflicting-gene-models" title="Permalink to this headline">¶</a></h2>
+<p>When two gene models are found to have an extensive overlap, then in general only the model with the stronger evidence is retained. However, models based on RefSeqs are always retained. Whereas any model not based on a RefSeq is discarded if it overlaps a model that is RefSeq based, two RefSeq-based models that overlap are both retained.</p>
+</div>
+<div class="section" id="location-of-model-coding-regions">
+<h2>Location of Model Coding Regions<a class="headerlink" href="#location-of-model-coding-regions" title="Permalink to this headline">¶</a></h2>
+<p>Initially, the longest open reading frame from each gene model is annotated as the protein coding sequence. This annotation can be revised if evidence associated with that model provides support for an alternative coding region. The protein coding sequence from any transcript used as evidence for a gene model is compared with the longest open reading frame in that model using BLAST (4). If the two do not match, the conflict is noted, and the annotation is revised if there is evidence to support an alternative coding region. For example, the coding sequence from the transcript evidence may indicate that an alternate translation start site is used, or that the model contains a premature termination codon. Models with coding regions less than 90 amino acids long are discarded, unless they are based on a RefSeq.</p>
+</div>
+<div class="section" id="relating-gene-models-to-known-genes-transcripts-and-proteins">
+<h2>Relating Gene Models to Known Genes, Transcripts, and Proteins<a class="headerlink" href="#relating-gene-models-to-known-genes-transcripts-and-proteins" title="Permalink to this headline">¶</a></h2>
+<p>The set of gene models produced by the preceding steps is a mixture of models for predicted genes and for known genes. To help identify models representing known genes, the model transcripts are compared with known transcripts. To help name the predicted genes, the proteins encoded by the models are also compared with known proteins.</p>
+</div>
+<div class="section" id="relating-the-model-transcripts-to-known-transcripts">
+<h2>Relating the Model Transcripts to Known Transcripts<a class="headerlink" href="#relating-the-model-transcripts-to-known-transcripts" title="Permalink to this headline">¶</a></h2>
+<p>To provide continuity from build to build and to identify genes based on their predicted transcripts, MegaBLAST (10) is used to compare model RNAs to: (a) RefSeq RNAs; (b) mRNAs from GenBank; and (c) model RNAs from the previous build. These comparisons are reported as reciprocal best hits if: (a) they produce a significant hit; (b) no other model has a better hit to that particular RNA; and (c) no other RNA has a better hit to that particular model.</p>
+</div>
+<div class="section" id="relating-the-model-proteins-to-known-proteins">
+<h2>Relating the Model Proteins to Known Proteins<a class="headerlink" href="#relating-the-model-proteins-to-known-proteins" title="Permalink to this headline">¶</a></h2>
+<p>The eukaryotic proteins with the best match to each protein predicted by the annotation process are used to identify the best model for a possible gene and to assign a name to gene models that are novel. The proteins encoded by the models are aligned to proteins from SWISS-PROT (18), NCBI RefSeq proteins (8, 9), and the NCBI non-redundant protein database using blastp (4). The name of the eukaryotic protein with the best match, its sequence identifier, and match score are recorded for each predicted protein with a significant hit.</p>
+</div>
+<div class="section" id="assigning-gene-identifiers-to-models">
+<h2>Assigning Gene Identifiers to Models<a class="headerlink" href="#assigning-gene-identifiers-to-models" title="Permalink to this headline">¶</a></h2>
+<p>Gene models are attributed to known genes whenever the correspondence is clear. If a model RNA has a reciprocal best hit with a known RNA, then the annotation of the known RNA is used to identify the gene. The first models to be assigned to genes are those that have reciprocal best hits with RefSeq RNAs. This is followed by assignment of those models that have reciprocal best hits to models from the previous build or to GenBank mRNAs. Gene data for models that match a mRNA not yet represented by a RefSeq are obtained from NCBI gene-specific databases (currently Entrez Gene, Chapter 19). If the mRNA is associated with an entry in one of these databases, then the information attached to that gene record (e.g., symbols, names, and database cross-references) is used in the annotation. If the correspondence with known genes is ambiguous, as may occur if there are undocumented paralogs, then an interim gene identifier is assigned.</p>
+</div>
+<div class="section" id="selection-of-transcript-models-to-represent-each-gene">
+<h2>Selection of Transcript Models to Represent Each Gene<a class="headerlink" href="#selection-of-transcript-models-to-represent-each-gene" title="Permalink to this headline">¶</a></h2>
+<p>Multiple models based on alternative transcripts for some genes may be produced. In most of these cases, one transcript model is selected to represent the product of the gene for annotation purposes. Any homology between eukaryotic proteins and proteins encoded by the models guides the choice between alternative models. Multiple transcripts are annotated only if the models are based on RefSeq mRNAs representing alternative transcripts from the same gene.</p>
+<p>Although alternative transcript models are not annotated, the alignments between the transcripts that represent alternative splicing and genomic contigs are processed for display in Map Viewer, Evidence Viewer, and Model Maker (see Chapter 20).</p>
+</div>
+<div class="section" id="naming-of-gene-products">
+<h2>Naming of Gene Products<a class="headerlink" href="#naming-of-gene-products" title="Permalink to this headline">¶</a></h2>
+<p>The transcripts and protein products of any models that have been assigned to a known gene are given the product names that appear in the LocusLink entry for that gene. The gene products from other genes are named based on any significant homology to other eukaryotic proteins, provided that the matching protein has a meaningful name (i.e., names such as “Hypothetical...” are ignored).</p>
+</div>
+<div class="section" id="annotation-of-the-assembled-genomic-contigs">
+<h2>Annotation of the Assembled Genomic Contigs<a class="headerlink" href="#annotation-of-the-assembled-genomic-contigs" title="Permalink to this headline">¶</a></h2>
+<p>The genomic contig RefSeqs are annotated with features that provide information about the location of genes, mRNAs, and coding regions. Features from curated genomic region RefSeqs are copied to the contigs based on the alignment between the curated sequence and the corresponding contig. Protein domains from the Conserved Domain Database (CDD; Ref. 16) are identified using reverse position-specific BLAST (RPS-BLAST; Ref. 4), and their locations are annotated. A description of the evidence supporting those RNAs and proteins that are not curated RefSeqs, i.e., those that are models, is also recorded.</p>
+</div>
+</div>
+<div class="section" id="annotation-of-other-features">
+<h1>Annotation of Other Features<a class="headerlink" href="#annotation-of-other-features" title="Permalink to this headline">¶</a></h1>
+<p>Reference sequences produced by the genome assembly process are annotated with features that provide landmarks valuable for making connections between maps based on different coordinate systems and for associating genes with diseases.</p>
+<div class="section" id="annotation-of-stss">
+<h2>Annotation of STSs<a class="headerlink" href="#annotation-of-stss" title="Permalink to this headline">¶</a></h2>
+<p>Placement of STSs on the genome assembly allows sequence-based data to be integrated with non-sequence-based maps that contain STS markers, such as genetic and radiation hybrid maps. STSs are identified by using e-PCR (13) to find sequences that match the STS primer pairs from UniSTS, the spacing of which is consistent with the reported PCR product size. The number of times that each STS appears in the assembled genome is recorded so that only those STSs that appear at only one or two locations in the assembled genome are annotated.</p>
+</div>
+<div class="section" id="annotation-of-clones">
+<h2>Annotation of Clones<a class="headerlink" href="#annotation-of-clones" title="Permalink to this headline">¶</a></h2>
+<p>Placement on the genome assembly of clones that have been mapped to cytogenetic bands by FISH provides the means to determine the correspondence between the sequence and cytogenetic coordinate systems (14, 15). Knowing this correspondence allows the integration of sequence-based data with cytogenetic data. For human, only those clones mapped by fluorescence in situ hybridization (FISH) by the human BAC Resource Consortium (see the Human BAC Resource) are annotated. Clones are placed using three types of sequence tags. Clones that have sequence for the genomic insert, either draft or finished, with a GenBank Accession number are localized by remapping the alignment between the clone sequence and other genomic clones to the assembled genomic contigs. Similarly, clones that have BAC end sequences are localized by remapping the alignment between the BAC end sequences and genomic clone sequences to the assembled genomic contigs. Clones that have STS markers confirmed by PCR or hybridization experiments are mapped using the locations in the assembled contigs of STS markers that were identified by e-PCR. The number of places that each clone appears in the assembled genome is recorded so that only those clones that either have a unique placement in the assembled genome or are placed twice on the same chromosome are annotated.</p>
+</div>
+<div class="section" id="annotation-of-sequence-variation">
+<h2>Annotation of Sequence Variation<a class="headerlink" href="#annotation-of-sequence-variation" title="Permalink to this headline">¶</a></h2>
+<p>Placement of Single Nucleotide Polymorphisms (SNPs) and other variations on the genome provides numerous landmarks that are valuable for associating genes with diseases (Chapter 5). Variations from dbSNP (19) are placed in their genomic contexts using the sequences that flank the variation. Flanking sequences are first run through RepeatMasker to mask repetitive sequences and then aligned to the assembled genomic sequence contigs using MegaBLAST (10). The resulting matches are classified as either high or low confidence, depending on the quality of the alignment, and the number of matches for each SNP is recorded so that only those SNPs that map to one or two locations in the assembled genome are annotated.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Bing&#39;s VimWorks</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, BingWang.
+      Last updated on Apr 21, 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>func &mdash; Bing&#39;s VimWorks</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.01',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/B.ico"/>
+    <link rel="top" title="Bing&#39;s VimWorks" href="../index.html" />
+    <link rel="next" title="Python" href="../HelloWorlds/HelloWorlds.html" />
+    <link rel="prev" title="GenBank" href="../GenBank/GenBank.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../HelloWorlds/HelloWorlds.html" title="Python"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../GenBank/GenBank.html" title="GenBank"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Bing&#39;s VimWorks</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/B.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">func</a><ul>
+<li><a class="reference internal" href="#alnrefine-py">alnrefine.py</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../GenBank/GenBank.html"
+                        title="previous chapter">GenBank</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../HelloWorlds/HelloWorlds.html"
+                        title="next chapter">Python</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/lib/lib.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="func">
+<h1>func<a class="headerlink" href="#func" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="alnrefine-py">
+<span id="alnrefine"></span><h2>alnrefine.py<a class="headerlink" href="#alnrefine-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#coding: utf-8</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author: Bing Wang</span>
+<span class="sd">Last Modified: 2012.3.19</span>
+<span class="sd">useage:</span>
+<span class="sd">    import sys</span>
+<span class="sd">    sys.path.append(&quot;/Users/bingwang/VimWork/&quot;)</span>
+<span class="sd">    import lib.func.alnrefine as alr </span>
+
+<span class="sd">    alr.refine(                   # alnfile -&gt; refined alnfile</span>
+<span class="sd">        alnfile,</span>
+<span class="sd">        [gap_sign=&quot;-&quot;,            #in alnfile,&quot;-&quot;means gap</span>
+<span class="sd">        outfile=alnfile.aa,       #default ourput alnfile.aa</span>
+<span class="sd">        reffile=alnfile.ref,      #reference and alinment printing</span>
+<span class="sd">        gap_allow=0,              #all how many gaps</span>
+<span class="sd">        min_conserve=5,           #the minimal conserved number</span>
+<span class="sd">        min_flanking=10,          #the minimal flanking number</span>
+<span class="sd">        max_nonconserve=6,        #the max countinue nonconserve</span>
+<span class="sd">        judge_conserve=1.0]       #(0,1]:conservity = count(base)/count(species) </span>
+<span class="sd">                                   &gt; judge_conserve</span>
+<span class="sd">        )</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_aln</span><span class="p">(</span><span class="n">alnfile</span><span class="p">):</span>
+    <span class="n">gene</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">alnfile</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;&gt;&quot;</span><span class="p">:</span>
+            <span class="n">genename</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="n">gene</span><span class="p">[</span><span class="n">genename</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">gene</span><span class="p">[</span><span class="n">genename</span><span class="p">]</span><span class="o">+=</span><span class="n">line</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">gene</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">gene</span><span class="p">[</span><span class="n">genename</span><span class="p">]):</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">error</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">gene</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;alignment not at same length&quot;</span>
+        <span class="k">return</span> <span class="n">gene</span> 
+
+<span class="k">def</span> <span class="nf">aln_mark</span><span class="p">(</span><span class="n">gene</span><span class="p">,</span><span class="n">judge_conserve</span><span class="p">,</span><span class="n">gap_sign</span><span class="p">):</span>
+    <span class="n">geneseq_mark</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="n">geneseq</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">gene</span><span class="p">:</span>
+        <span class="n">geneseq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geneseq</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">gene</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">geneseq</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="n">alnment</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="n">mark</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">for</span> <span class="n">sequence</span> <span class="ow">in</span> <span class="n">geneseq</span><span class="p">:</span>
+            <span class="n">alnment</span> <span class="o">+=</span> <span class="n">sequence</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">alnment</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">gap_sign</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">geneseq_mark</span> <span class="o">+=</span> <span class="s">&quot;X&quot;</span>    <span class="c">#X means gap</span>
+            <span class="n">mark</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">alnment</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">alnment</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">base</span><span class="p">)</span><span class="o">*</span><span class="mf">1.</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">alnment</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">judge_conserve</span><span class="p">:</span>
+                    <span class="n">geneseq_mark</span> <span class="o">+=</span> <span class="s">&quot;C&quot;</span>    <span class="c">#C means conserve</span>
+                    <span class="n">mark</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">mark</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+                <span class="n">geneseq_mark</span> <span class="o">+=</span> <span class="s">&quot;N&quot;</span>    <span class="c">#N means non-conserve</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geneseq_mark</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">geneseq</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="n">geneseq_mark</span>
+
+<span class="k">def</span> <span class="nf">gene_refine</span><span class="p">(</span><span class="n">geneseq_mark</span><span class="p">,</span><span class="n">gap_allow</span><span class="p">,</span><span class="n">min_conserve</span><span class="p">,</span><span class="n">min_flanking</span><span class="p">,</span><span class="n">max_nonconserve</span><span class="p">):</span>
+    <span class="n">keep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="n">count_conserve</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">count_gap</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">continue_nonconserve</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">keeptemp</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">mark</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">geneseq_mark</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mark</span> <span class="o">==</span> <span class="s">&quot;X&quot;</span><span class="p">:</span>
+                <span class="n">count_gap</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">continue_nonconserve</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">keeptemp</span> <span class="o">+=</span> <span class="s">&quot; &quot;</span>
+                <span class="k">if</span> <span class="n">count_gap</span><span class="o">&gt;</span><span class="n">gap_allow</span> <span class="ow">or</span> <span class="n">continue_nonconserve</span><span class="o">&gt;=</span><span class="n">max_nonconserve</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">count_conserve</span><span class="o">&gt;=</span><span class="n">min_conserve</span> <span class="ow">or</span> \
+                      <span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">[:</span><span class="n">keeptemp</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">&gt;=</span><span class="n">min_flanking</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">[:</span><span class="n">keeptemp</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])):</span>
+                            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;T&quot;</span>
+                        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">[</span><span class="n">keeptemp</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:])):</span>
+                            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;F&quot;</span>
+                    <span class="k">else</span><span class="p">:</span> 
+                        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">)):</span>
+                            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;F&quot;</span>
+                    <span class="n">count_conserve</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">continue_nonconserve</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">count_gap</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">start</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="n">keeptemp</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+            <span class="k">elif</span> <span class="n">mark</span> <span class="o">==</span> <span class="s">&quot;C&quot;</span><span class="p">:</span>
+                <span class="n">count_conserve</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">continue_nonconserve</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">keeptemp</span> <span class="o">+=</span> <span class="s">&quot;T&quot;</span>
+            <span class="k">elif</span> <span class="n">mark</span> <span class="o">==</span> <span class="s">&quot;N&quot;</span><span class="p">:</span>
+                <span class="n">continue_nonconserve</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">keeptemp</span> <span class="o">+=</span> <span class="s">&quot; &quot;</span>
+                <span class="k">if</span> <span class="n">continue_nonconserve</span><span class="o">&gt;=</span><span class="n">max_nonconserve</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">count_conserve</span><span class="o">&gt;=</span><span class="n">min_conserve</span> <span class="ow">or</span> \
+                      <span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">[:</span><span class="n">keeptemp</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">&gt;=</span><span class="n">min_flanking</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">[:</span><span class="n">keeptemp</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])):</span>
+                            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;T&quot;</span>
+                        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">[</span><span class="n">keeptemp</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:])):</span>
+                            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;F&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">)):</span>
+                            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;F&quot;</span>
+                    <span class="n">count_conserve</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">continue_nonconserve</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">count_gap</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">start</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="n">keeptemp</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span><span class="s">&quot;Something unnormal happen&quot;</span>
+                <span class="k">print</span> <span class="n">mark</span>
+        <span class="k">elif</span> <span class="n">mark</span> <span class="o">==</span> <span class="s">&quot;C&quot;</span><span class="p">:</span> 
+            <span class="n">start</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">keeptemp</span> <span class="o">+=</span> <span class="s">&quot;T&quot;</span>
+            <span class="n">count_conserve</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">continue_nonconserved</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">mark</span> <span class="o">==</span> <span class="s">&quot;X&quot;</span> <span class="ow">or</span> <span class="n">mark</span> <span class="o">==</span> <span class="s">&quot;N&quot;</span><span class="p">:</span>
+            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;F&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&quot;Something unnormal happen&quot;</span>
+            <span class="k">print</span> <span class="n">mark</span>
+    <span class="k">if</span> <span class="n">count_conserve</span><span class="o">&gt;=</span><span class="n">min_conserve</span> <span class="ow">or</span> \
+      <span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">[:</span><span class="n">keeptemp</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">&gt;=</span><span class="n">min_flanking</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">[:</span><span class="n">keeptemp</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])):</span>
+            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;T&quot;</span>
+        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">[</span><span class="n">keeptemp</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:])):</span>
+            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;F&quot;</span>
+    <span class="k">else</span><span class="p">:</span>                    
+        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keeptemp</span><span class="p">)):</span>
+            <span class="n">keep</span> <span class="o">+=</span> <span class="s">&quot;F&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">geneseq_mark</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Bug @ gene_refine&quot;</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="n">keep</span>
+
+<span class="k">def</span> <span class="nf">write_aa</span><span class="p">(</span><span class="n">gene</span><span class="p">,</span><span class="n">name_index_order</span><span class="p">,</span><span class="n">keep</span><span class="p">,</span><span class="n">outfile</span><span class="p">):</span>
+    <span class="n">gene_new</span> <span class="o">=</span> <span class="p">{}</span> 
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">gene</span><span class="p">:</span>
+        <span class="n">gene_new</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">mark</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keep</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">mark</span> <span class="o">==</span> <span class="s">&quot;T&quot;</span><span class="p">:</span>
+                <span class="n">gene_new</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gene</span><span class="p">))</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gene_new</span><span class="p">[</span><span class="n">name</span><span class="p">]))</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_index_order</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&gt;&quot;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">gene_new</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">write_ref</span><span class="p">(</span><span class="n">gene</span><span class="p">,</span><span class="n">name_index_order</span><span class="p">,</span><span class="n">mark</span><span class="p">,</span><span class="n">keep</span><span class="p">,</span><span class="n">outfile</span><span class="p">,</span><span class="n">gap_allow</span><span class="p">,</span><span class="n">min_conserve</span><span class="p">,</span>\
+        <span class="n">min_flanking</span><span class="p">,</span><span class="n">max_nonconserve</span><span class="p">,</span><span class="n">judge_conserve</span><span class="p">,</span><span class="n">perline</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">perline</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">perline</span> <span class="o">=</span> <span class="mi">60</span>
+    <span class="n">max_genename</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_index_order</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">max_genename</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="n">max_genename</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">perline</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">gene</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">name</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;gene_mark&quot;</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">mark</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>  <span class="c"># len(&quot;gene_mark&quot;)=9</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;gene_keep&quot;</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">keep</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_index_order</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">name</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">][:</span><span class="n">perline</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;gene_mark&quot;</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">mark</span><span class="p">[:</span><span class="n">perline</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;gene_keep&quot;</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">keep</span><span class="p">[:</span><span class="n">perline</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">j</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">])</span><span class="o">/</span><span class="n">perline</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_index_order</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">name</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">][(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">perline</span><span class="p">:(</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">perline</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;gene_mark&quot;</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">mark</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">perline</span><span class="p">:(</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">perline</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;gene_keep&quot;</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">keep</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">perline</span><span class="p">:(</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">perline</span><span class="p">]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+            <span class="n">j</span><span class="o">=</span><span class="n">i</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">name_index_order</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">name</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">gene</span><span class="p">[</span><span class="n">name</span><span class="p">][(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">perline</span><span class="p">:]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;gene_mark&quot;</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">mark</span><span class="p">[(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">perline</span><span class="p">:]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;gene_keep&quot;</span><span class="o">+</span><span class="p">(</span><span class="n">max_genename</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="s">&quot; &quot;</span><span class="o">+</span><span class="n">keep</span><span class="p">[(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">perline</span><span class="p">:]</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n\n\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;*******************************</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;*        Argument             *</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;*******************************</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;#gap_allow:</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">gap_allow</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;#min_conserve:</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">min_conserve</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;#min_flanking:</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">min_flanking</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;#max_nonconserve:</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">max_nonconserve</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;#judge_conserve:</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">judge_conserve</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c">###########input#############</span>
+<span class="k">def</span> <span class="nf">refine</span><span class="p">(</span><span class="n">alnfile</span><span class="p">,</span><span class="n">gap_sign</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">outfile</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">reffile</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">gap_allow</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+        <span class="n">min_conserve</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">min_flanking</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">max_nonconserve</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+        <span class="n">judge_conserve</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">gap_sign</span><span class="o">==</span><span class="bp">None</span><span class="p">:</span>
+        <span class="n">gap_sign</span><span class="o">=</span><span class="s">&quot;-&quot;</span>    <span class="c">#In alnfile,the gap_sign should be &quot;-&quot;, or modidy this</span>
+    <span class="k">if</span> <span class="n">outfile</span><span class="o">==</span><span class="bp">None</span><span class="p">:</span>
+        <span class="n">outfile</span> <span class="o">=</span> <span class="n">alnfile</span><span class="p">[:</span><span class="n">alnfile</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)]</span><span class="o">+</span><span class="s">&quot;.aa&quot;</span>
+    <span class="k">if</span> <span class="n">reffile</span><span class="o">==</span><span class="bp">None</span><span class="p">:</span>
+        <span class="n">reffile</span> <span class="o">=</span> <span class="n">alnfile</span><span class="p">[:</span><span class="n">alnfile</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)]</span><span class="o">+</span><span class="s">&quot;.ref&quot;</span>
+    <span class="k">if</span> <span class="n">gap_allow</span><span class="o">==</span><span class="bp">None</span><span class="p">:</span>
+        <span class="n">gap_allow</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c">#can be any int &gt;= 0</span>
+    <span class="k">if</span> <span class="n">min_conserve</span><span class="o">==</span><span class="bp">None</span><span class="p">:</span>
+        <span class="n">min_conserve</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">if</span> <span class="n">min_flanking</span><span class="o">==</span><span class="bp">None</span><span class="p">:</span>
+        <span class="n">min_flanking</span> <span class="o">=</span> <span class="mi">10</span>    <span class="c">#should be biger than min_conserve or won&#39;t work</span>
+    <span class="k">if</span> <span class="n">max_nonconserve</span><span class="o">==</span><span class="bp">None</span><span class="p">:</span>
+        <span class="n">max_nonconserve</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="k">if</span> <span class="n">judge_conserve</span><span class="o">==</span><span class="bp">None</span><span class="p">:</span>
+        <span class="n">judge_conserve</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c">#any float between (0,1)</span>
+
+    <span class="n">name_index_order</span> <span class="o">=</span> <span class="n">alnfile</span><span class="p">[</span><span class="n">alnfile</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">alnfile</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="p">)</span>
+    <span class="n">gene</span> <span class="o">=</span> <span class="n">read_aln</span><span class="p">(</span><span class="n">alnfile</span><span class="p">)</span>
+    <span class="n">mark</span> <span class="o">=</span> <span class="n">aln_mark</span><span class="p">(</span><span class="n">gene</span><span class="p">,</span><span class="n">judge_conserve</span><span class="p">,</span><span class="n">gap_sign</span><span class="p">)</span>
+    <span class="n">keep</span> <span class="o">=</span> <span class="n">gene_refine</span><span class="p">(</span><span class="n">mark</span><span class="p">,</span><span class="n">gap_allow</span><span class="p">,</span><span class="n">min_conserve</span><span class="p">,</span><span class="n">min_flanking</span><span class="p">,</span><span class="n">max_nonconserve</span><span class="p">)</span>
+    <span class="n">write_aa</span><span class="p">(</span><span class="n">gene</span><span class="p">,</span><span class="n">name_index_order</span><span class="p">,</span><span class="n">keep</span><span class="p">,</span><span class="n">outfile</span><span class="p">)</span>
+
+    <span class="n">mark</span> <span class="o">=</span> <span class="n">mark</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">,</span><span class="s">&quot;:&quot;</span><span class="p">)</span> <span class="c">#: means conserved</span>
+    <span class="n">mark</span> <span class="o">=</span> <span class="n">mark</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;N&quot;</span><span class="p">,</span><span class="s">&quot; &quot;</span><span class="p">)</span> <span class="c">#. means noncenserved </span>
+    <span class="n">mark</span> <span class="o">=</span> <span class="n">mark</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">,</span><span class="s">&quot; &quot;</span><span class="p">)</span> <span class="c"># means gap</span>
+    <span class="n">keep</span> <span class="o">=</span> <span class="n">keep</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;F&quot;</span><span class="p">,</span><span class="s">&quot; &quot;</span><span class="p">)</span> <span class="c"># means not good aliment</span>
+    <span class="n">keep</span> <span class="o">=</span> <span class="n">keep</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">,</span><span class="s">&quot;=&quot;</span><span class="p">)</span> <span class="c">#_ means good alinment </span>
+    <span class="n">write_ref</span><span class="p">(</span><span class="n">gene</span><span class="p">,</span><span class="n">name_index_order</span><span class="p">,</span><span class="n">mark</span><span class="p">,</span><span class="n">keep</span><span class="p">,</span><span class="n">reffile</span><span class="p">,</span><span class="n">gap_allow</span><span class="p">,</span><span class="n">min_conserve</span><span class="p">,</span>\
+            <span class="n">min_flanking</span><span class="p">,</span><span class="n">max_nonconserve</span><span class="p">,</span><span class="n">judge_conserve</span><span class="p">)</span>
+
+<span class="c">##########run_test###########</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">refine</span><span class="p">(</span><span class="s">&quot;/Users/bingwang/VimWork/lib/test/Kwal0.3_SAKL0D07062g_KLLA0F01793g.fa&quot;</span><span class="p">)</span>
+    <span class="c">#filename = &quot;Kwal0.3_SAKL0D07062g_KLLA0F01793g&quot;</span>
+    <span class="c">#name_index_order = filename.split(&quot;_&quot;)</span>
+    <span class="c">#alnfile = &quot;/Users/bingwang/VimWork/lib/test/&quot;+filename+&quot;.fa&quot;</span>
+    <span class="c">#outfile = &quot;/Users/bingwang/VimWork/lib/test/&quot;+filename+&quot;.aa&quot;</span>
+    <span class="c">#reffile = &quot;/Users/bingwang/VimWork/lib/test/&quot;+filename+&quot;.ref&quot;</span>
+    <span class="c">##Arguments</span>
+    <span class="c">#gap_sign = &quot;-&quot;</span>
+    <span class="c">#gap_allow = 0    #can be any int &gt;= 0 </span>
+    <span class="c">#min_conserve = 5    </span>
+    <span class="c">#min_flanking = 10    #should be biger than min_conserve or won&#39;t work</span>
+    <span class="c">#max_nonconserve = 6    </span>
+    <span class="c">#judge_conserve = 1.0    #any float between (0,1)</span>
+    <span class="c">##Mianfun</span>
+    <span class="c">#gene = read_aln(alnfile)</span>
+    <span class="c">#mark = aln_mark(gene,judge_conserve,gap_sign)</span>
+    <span class="c">#keep = gene_refine(mark,gap_allow,min_conserve,min_flanking,max_nonconserve)</span>
+    <span class="c">#write_aa(gene,name_index_order,keep,outfile)</span>
+    <span class="c">#</span>
+    <span class="c">##for more beautiful printing </span>
+    <span class="c">#mark = mark.replace(&quot;C&quot;,&quot;:&quot;) #: means conserved</span>
+    <span class="c">#mark = mark.replace(&quot;N&quot;,&quot; &quot;) #. means noncenserved </span>
+    <span class="c">#mark = mark.replace(&quot;X&quot;,&quot; &quot;) # means gap</span>
+
+    <span class="c">#keep = keep.replace(&quot;F&quot;,&quot; &quot;) # means not good aliment</span>
+    <span class="c">#keep = keep.replace(&quot;T&quot;,&quot;=&quot;) #_ means good alinment </span>
+    <span class="c">#</span>
+    <span class="c">#write_ref(gene,name_index_order,mark,keep,reffile,gap_allow,min_conserve,\</span>
+    <span class="c">#        min_flanking,max_nonconserve,judge_conserve)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../HelloWorlds/HelloWorlds.html" title="Python"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../GenBank/GenBank.html" title="GenBank"
+             >previous</a> |</li>
+        <li><a href="../index.html">Bing&#39;s VimWorks</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, BingWang.
+      Last updated on Apr 21, 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
